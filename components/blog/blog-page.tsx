@@ -1,0 +1,177 @@
+'use client'
+import Image from 'next/image';
+import Link from 'next/link';
+import {useEffect, useState} from "react";
+import {Button} from "@/components/ui/button";
+import {getPosts} from "@/data/blog";
+import BlogSkeleton from "@/components/blog/loading";
+import {motion} from "framer-motion";
+
+export default function BlogPage() {
+    const [isLoading, setIsLoading] = useState(true);
+
+    type posts = {
+        id: number;
+        title: string;
+        description: string;
+        author: string;
+        slug: string;
+        date: string;
+        tags: string;
+    };
+
+    const [posts, setPosts] = useState<posts[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getPosts();
+            if (data) {
+                //@ts-ignore
+                setPosts(data);
+            }
+        };
+        fetchData().then(() => {
+            setIsLoading(false);
+        });
+    }, []);
+
+
+    return (
+        <>
+            {(!isLoading) && (
+
+                <motion.div
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{duration: 0.5}}
+                    className="p-5"
+                >
+                    <motion.section
+                        initial={{opacity: 0, y: 20}}
+                        animate={{opacity: 1, y: 0}}
+                        transition={{duration: 0.5, delay: 0.2}}
+                        className="m-4"
+                    >
+                        <div className="flex flex-col md:flex-row gap-4">
+                            {posts.length > 0 && (
+                                <article
+                                    className="bg-card border rounded-lg p-6 md:w-2/3 flex flex-col items-center justify-center">
+                                    <div className="flex-grow">
+                                        <div className="w-full flex justify-center items-center">
+                                            <Link href={`/blog/${posts[0].slug}`}>
+                                                <Image
+                                                    src="/planner.png"
+                                                    alt="Most Recent Blog Post"
+                                                    width={750}
+                                                    height={550}
+                                                    className="rounded-md border "
+                                                />
+                                            </Link>
+                                        </div>
+                                        <Link href={`/blog/${posts[0].slug}`}>
+                                            <h2 className="text-2xl text-center font-semibold mt-4">{posts[0].title}</h2>
+                                        </Link>
+                                        <Link href={`/blog/${posts[0].slug}`}>
+                                            <p className="text-gray-600 text-center font-semibold">
+                                                {new Date(posts[0].date).toLocaleDateString('en-US', {
+                                                    year: 'numeric',
+                                                    month: 'long',
+                                                    day: 'numeric',
+                                                })}
+                                            </p>
+                                        </Link>
+                                        <div className="w-full flex justify-center items-center">
+                                            <Link href={`/blog/${posts[0].slug}`}>
+                                                <Button variant="secondary" className="mt-4">
+                                                    Read More
+                                                </Button>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </article>
+                            )}
+                            <div className="md:w-1/3 grid grid-cols-1 gap-4">
+                                {posts.slice(1, 3).map((post, index) => (
+                                    <article key={index} className="bg-card border text-center rounded-lg p-4">
+                                        <div className={'w-full flex justify-center'}>
+                                            <Link
+                                                href={`/blog/${post.slug}`}
+                                            >
+                                                <Image
+                                                    src="/comp.png"
+                                                    alt="Runner Up Blog Post"
+                                                    width={300}
+                                                    height={200}
+                                                    className="rounded-md border"
+                                                />
+                                            </Link>
+                                        </div>
+                                        <Link
+                                            href={`/blog/${post.slug}`}
+                                        >
+                                            <h2 className="text-xl font-semibold mt-2">{post.title}</h2>
+                                        </Link>
+                                        <Link
+                                            href={`/blog/${post.slug}`}
+                                        >
+                                            <p className="text-gray-600 text-center font-semibold">
+
+                                                {new Date(post.date).toLocaleDateString('en-US', {
+                                                    year: 'numeric',
+                                                    month: 'long',
+                                                    day: 'numeric',
+                                                })}
+                                            </p>
+                                        </Link>
+                                        <Link
+                                            href={`/blog/${post.slug}`}
+                                        >
+                                            <Button variant={'secondary'} className={'mt-4'}>
+                                                Read More
+                                            </Button>
+                                        </Link>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.section>
+                    <motion.section
+                        initial={{opacity: 0, y: 20}}
+                        animate={{opacity: 1, y: 0}}
+                        transition={{duration: 0.5, delay: 0.2}}
+                        className="grid m-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                    >
+                            {posts.slice(3).map((post, index) => (
+                                <article key={index}
+                                         className="bg-card border text-center rounded-lg p-6 flex flex-col justify-between h-full">
+                                    <Image
+                                        src="/comp.png"
+                                        alt="Blog Post"
+                                        width={700}
+                                        height={400}
+                                        className="rounded-md border"
+                                    />
+                                    <h2 className="text-2xl font-semibold mt-4">{post.title}</h2>
+                                    <p className="text-gray-600 text-center font-semibold">
+                                        {new Date(post.date).toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric',
+                                        })}
+                                    </p>
+                                    <div>
+                                        <Link href={`/blog/${post.slug}`}>
+                                            <Button variant="secondary" className="mt-2">
+                                                Read More
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                </article>
+                            ))}
+                    </motion.section>
+                </motion.div>
+            )}
+
+        </>
+    );
+}
