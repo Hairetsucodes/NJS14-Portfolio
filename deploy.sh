@@ -1,5 +1,5 @@
 cd /home/azureuser/NJS14-Portfolio
-git pull origin main
+git pull origin master
 
 pnpm install
 pnpm build
