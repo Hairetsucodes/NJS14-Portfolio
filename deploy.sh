@@ -1,4 +1,4 @@
-cd /home/azureuser/OpenPortfolio
+cd /home/azureuser/NJS14-Portfolio
 git pull origin main
 
 pnpm install
