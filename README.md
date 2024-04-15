@@ -53,5 +53,5 @@ To setup/signin a user account go to localhost:3000/register localhost:3000/sign
 
 localhost:3000/dashboard is where you can manage your blog.
 
-Enjoy! 🎉!
+Enjoy! 🎉
 
