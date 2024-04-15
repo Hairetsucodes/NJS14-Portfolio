@@ -13,7 +13,7 @@ export function SitesSection() {
     return (
         <div className={"mt-8 mx-10"}>
             {/* motion dive to fade in from the back*/}
-            <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-4 mx-auto">
+            <div className="flex flex-col lg:flex-row justify-center w-full gap-4 mx-auto">
 
                 <motion.div
                     initial={{x: -100, opacity: 0}}
