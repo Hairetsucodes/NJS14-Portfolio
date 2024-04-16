@@ -3,7 +3,7 @@ import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import CodeMirror from "@uiw/react-codemirror"
 import {markdown} from '@codemirror/lang-markdown';
 import remarkGfm from 'remark-gfm';
@@ -23,49 +23,36 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
-import {useParams} from "next/navigation";
 import {editPost} from "@/data/blog";
-import {getPost} from "@/data/blog";
 import {toast} from "sonner";
-import { useRouter } from 'next/navigation';
+import {useRouter} from 'next/navigation';
 
-export default function BlogEditor() {
-    const [postData, setPostData] = useState<any>([]);
-    const params = useParams();
-    const postSlug = params.postSlug as string;
+interface BlogEditorProps {
+    postData: {
+        id: number;
+        title: string;
+        img: string;
+        category: string;
+        content: string;
+        published: boolean;
+        slug: string;
+        date: Date;
+        userId: string | null;
+    } | null
+}
+
+export default function BlogEditor({postData}: BlogEditorProps) {
     const [content, setContent] = useState('');
     const [isPreview, setIsPreview] = useState(false);
     const form = useForm<z.infer<typeof NewBlogSchema>>({
         resolver: zodResolver(NewBlogSchema),
     })
     const router = useRouter()
-    async function fetchPostData() {
-        type data = {
-            id: string;
-            title: string;
-            content: string;
-            img: string;
-            category: string;
-        }
-        const data = await getPost(postSlug) as unknown as data
-        setPostData(data)
-        setContent(data.content);
-
-        form.reset({
-            title: data.title,
-            img: data.img,
-            category: data.category,
-            content: data.content,
-            tags: []
-        });
-    }
-
-    useEffect(() => {
-        fetchPostData().then(() => {});
-        // eslint-disable-next-line
-    }, []);
 
     async function onSubmit(values: z.infer<typeof NewBlogSchema>) {
+        if (postData == null)  {
+            return null
+        }
         await editPost(postData.id, values.title, values.content, values.category, values.img);
         toast("Blog Edited")
         form.reset()
