@@ -12,7 +12,7 @@ export default function BlogPage() {
     type posts = {
         id: number;
         title: string;
-        description: string;
+        content: string;
         author: string;
         slug: string;
         date: string;
@@ -23,9 +23,8 @@ export default function BlogPage() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getPosts();
+            const data: any = await getPosts();
             if (data) {
-                //@ts-ignore
                 setPosts(data);
             }
         };
@@ -38,7 +37,6 @@ export default function BlogPage() {
     return (
         <>
             {(!isLoading) && (
-
                 <motion.div
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
@@ -82,6 +80,11 @@ export default function BlogPage() {
                                                     })}
                                                 </p>
                                             </Link>
+                                        </div>
+                                        <div>
+                                            <p className="text-gray-600 text-center font-semibold">
+                                                {posts[0].content.split('\n')[2]}
+                                            </p>
                                         </div>
                                         <div className="w-full flex justify-center items-center">
                                             <Link href={`/blog/${posts[0].slug}`}>
