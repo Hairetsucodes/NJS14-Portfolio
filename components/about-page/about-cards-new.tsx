@@ -214,25 +214,12 @@ export function AboutTabs() {
     return (
         <div className={""}>
             <div className={"absolute z-30  pt-2"}>
-                <RadioGroup
-                    value={selectedOption}
-                    onValueChange={setSelectedOption}
-                >
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="History" id="History"/>
-                        <Label htmlFor="History">History</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="Skills" id="Skills"/>
-                        <Label htmlFor="Skills">Skills</Label>
-                    </div>
-                </RadioGroup>
             </div>
             <div className={" pt-2 px-4"}>
             {selectedOption === "History" ? (
-                <Tabs tabs={tabs}/>
+                <Tabs tabs={tabs} setSelectedOption={setSelectedOption} selectedOption={selectedOption} />
             ) : (
-                <Tabs tabs={frameWorkTabs}/>
+                <Tabs tabs={frameWorkTabs} setSelectedOption={setSelectedOption} selectedOption={selectedOption}/>
             )}
             </div>
         </div>

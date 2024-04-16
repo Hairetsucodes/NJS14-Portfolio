@@ -1,6 +1,6 @@
 "use client";
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import {cn} from "@/lib/utils";
 import {Card, CardContent} from "@/components/ui/card"
@@ -12,6 +12,8 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel"
 import {Button} from '@/components/ui/button'
+import {RadioGroup, RadioGroupItem} from "@/components/ui/radio-group";
+import {Label} from "@/components/ui/label";
 
 type Tab = {
     title: string;
@@ -20,19 +22,25 @@ type Tab = {
     content?: string | React.ReactNode | any;
 };
 
-export const Tabs = ({
-                         tabs: propTabs,
-                         containerClassName,
-                         activeTabClassName,
-                         tabClassName,
-                         contentClassName,
-                     }: {
+interface TabsInterface {
     tabs: Tab[];
     containerClassName?: string;
     activeTabClassName?: string;
     tabClassName?: string;
     contentClassName?: string;
-}) => {
+    selectedOption: string;
+    setSelectedOption: any;
+}
+
+export const Tabs = ({
+                         selectedOption,
+                         setSelectedOption,
+                         tabs: propTabs,
+                         containerClassName,
+                         activeTabClassName,
+                         tabClassName,
+                         contentClassName,
+                     }: TabsInterface) => {
     const [active, setActive] = useState<Tab>(propTabs[0]);
     const [tabs, setTabs] = useState<Tab[]>(propTabs);
 
@@ -43,7 +51,10 @@ export const Tabs = ({
         setTabs(newTabs);
         setActive(newTabs[0]);
     };
-
+    useEffect(() => {
+        moveSelectedTabToTop(0)
+        console.log('setSelectedOption', selectedOption)
+    }, [selectedOption]);
     const [hovering, setHovering] = useState(false);
 
     return (
@@ -106,6 +117,21 @@ export const Tabs = ({
             </div>
             <div
                 className="lg:flex hidden flex-row items-center justify-center [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full">
+                <div className={"absolute w-full flex"}>
+                    <RadioGroup
+                        value={selectedOption}
+                        onValueChange={setSelectedOption}
+                    >
+                        <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="History" id="History"/>
+                            <Label htmlFor="History">History</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="Skills" id="Skills"/>
+                            <Label htmlFor="Skills">Skills</Label>
+                        </div>
+                    </RadioGroup>
+                </div>
                 <ol className="justify-center items-center text-center sm:flex">
                     {propTabs.map((tab, idx) => (
                         <li key={idx} className="relative ">
