@@ -19,7 +19,6 @@ interface NavMenuProps {
     children: React.ReactNode;
 }
 export function NavMenu({children, session}: NavMenuProps) {
-     console.log(session)
     return (
         <div className="w-full flex  gap-x-2">
             <div className={'hidden w-full justify-center items-center lg:flex'}>

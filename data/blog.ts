@@ -72,7 +72,6 @@ export const createPost = async (title: string, content: string, category: strin
                     category: category,
                     content: content,
                     published: true,
-                    // @ts-ignore
                     date: new Date(),
                     slug: slug
                 }

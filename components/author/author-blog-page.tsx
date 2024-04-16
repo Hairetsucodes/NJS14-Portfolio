@@ -20,9 +20,8 @@ export default function AuthorBlogPage() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getPosts();
+            const data: any = await getPosts();
             if (data) {
-                //@ts-ignore
                 setPosts(data);
             }
         };
@@ -31,8 +30,8 @@ export default function AuthorBlogPage() {
     }, []);
 
 
+
     const handleDelete = async (postId: number) => {
-        // Logic for deleting a post
         await deletePost(postId);
         setPosts(posts.filter(post => post.id !== postId));
     };
