@@ -1,40 +1,35 @@
 'use client'
 import Image from 'next/image';
 import Link from 'next/link';
-import {useEffect, useState} from "react";
 import {Button} from "@/components/ui/button";
-import {deletePost, getPosts} from "@/data/blog";
+import {deletePost} from "@/data/blog";
+import {useRouter} from "next/navigation";
 
-export default function AuthorBlogPage() {
-    type posts = {
+interface BlogPageProps {
+    posts: {
         id: number;
         title: string;
-        description: string;
-        author: string;
+        img: string;
+        category: string;
+        content: string;
+        published: boolean;
         slug: string;
-        date: string;
-        tags: string;
-    };
+        date: Date;
+        userId: string | null;
+    }[] | null,
+}
 
-    const [posts, setPosts] = useState<posts[]>([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data: any = await getPosts();
-            if (data) {
-                setPosts(data);
-            }
-        };
-        fetchData().then(() => {
-        });
-    }, []);
-
-
+export default function AuthorBlogPage({posts} : BlogPageProps) {
+    const router = useRouter();
+    if (posts == null)  {
+        return null
+    }
 
     const handleDelete = async (postId: number) => {
         await deletePost(postId);
-        setPosts(posts.filter(post => post.id !== postId));
+        router.refresh()
     };
+
 
     return (
         <div className="min-h-screen p-5">

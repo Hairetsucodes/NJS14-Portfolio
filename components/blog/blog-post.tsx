@@ -1,8 +1,8 @@
+'use client'
 import Image from "next/image";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {CodeBlock} from "@/components/ui/Code";
-import BlogSkeleton from "@/components/blog/blog-post-loading";
 import {motion} from 'framer-motion'
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
@@ -20,15 +20,16 @@ interface BlogPostProps {
         slug: string;
         date: Date;
         userId: string | null;
-    } | any,
-    isLoading: boolean
+    } | null,
 }
-export default function BlogPost({postData, isLoading}: BlogPostProps): JSX.Element {
+export default function BlogPost({postData}: BlogPostProps) {
     const options = {code: CodeBlock}
+    if (postData == null)  {
+        return null
+    }
 
     return (
         <div className="w-full justify-center pt-20 flex flex-grow ">
-            {!isLoading && (
                 <div className="px-8 p-4 bg-card rounded-lg border">
                     <motion.div
                         initial={{opacity: 0}}
@@ -67,7 +68,6 @@ export default function BlogPost({postData, isLoading}: BlogPostProps): JSX.Elem
 
                     </motion.div>
                 </div>
-                    )}
                 </div>
 
                 )

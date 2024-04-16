@@ -1,12 +1,16 @@
 import BlogPage from "@/components/blog/blog-page";
 import {cn} from "@/lib/utils";
+import {getPosts} from "@/data/blog";
 
-export default function Page() {
+export const dynamic = 'force-dynamic'
+
+export default async function Page() {
+    const posts = await getPosts()
+
     return (
-        <main
-            className="">
+        <main className="">
             <div className={cn("")}>
-                <BlogPage/>
+                <BlogPage posts={posts} />
             </div>
         </main>
     );
