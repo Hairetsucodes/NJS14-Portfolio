@@ -21,6 +21,7 @@ import {useState} from "react"
 import Link from "next/link";
 import LogoLight from "@/assets/logo-light.png"
 import {ThemeImage} from "@/components/theme/theme-image";
+import {SocialLogin} from "@/components/authentication/social";
 
 
 export default function SignIn() {
@@ -113,6 +114,7 @@ export default function SignIn() {
                         </div>
                     </form>
                 </Form>
+                <SocialLogin/>
                 <div className="text-sm text-center">
                     <Link href="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
                         Don&apos;t have an account? Sign up
