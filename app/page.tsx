@@ -5,7 +5,7 @@ import {HeroSection} from "@/components/frontpage/hero-section";
 export default function Home() {
     return (
         <main>
-            <div className={''}>
+            <div className={'pt-12'}>
                 <HeroSection/>
                 <SitesSection/>
             </div>
