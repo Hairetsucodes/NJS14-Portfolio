@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import {useSession} from "next-auth/react";
 import {cn} from "@/lib/utils"
 
 import {
@@ -14,7 +13,6 @@ import {
     NavigationMenuTrigger, navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import {Button} from '@/components/ui/button'
-import {SignOutButton} from "@/components/authentication/signout-button";
 
 interface NavMenuProps {
     session: any,
@@ -57,7 +55,7 @@ export function NavMenu({children, session}: NavMenuProps) {
                                             <a className="flex h-full w-full select-none flex-col hover:bg-slate-700 justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                                                href={"/portfolio"}
                                             >
-                                                <div className="mb-2 mt-4 text-lg font-medium">
+                                                <div className="mb-2 text-lg font-medium">
                                                     Portfolio
                                                 </div>
                                                 <p className="text-sm leading-tight text-muted-foreground">

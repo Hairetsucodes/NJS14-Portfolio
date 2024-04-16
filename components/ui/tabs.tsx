@@ -53,7 +53,6 @@ export const Tabs = ({
     };
     useEffect(() => {
         moveSelectedTabToTop(0)
-        console.log('setSelectedOption', selectedOption)
     }, [selectedOption]);
     const [hovering, setHovering] = useState(false);
 
