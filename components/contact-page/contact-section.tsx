@@ -6,7 +6,7 @@ import React from "react";
 export function ContactSection() {
     const socialLinks = [
         { icon: FaGithub, url: "https://github.com/hairetsucodes" },
-        { icon: FaLinkedin, url: "https://www.linkedin.com/in/thomas-whidden-80184036" },
+        { icon: FaLinkedin, url: "https://www.linkedin.com/in/hairetsu" },
         { icon: FaTwitter, url: "https://x.com/hairetsu" },
         { icon: FaEnvelope, url: "mailto:hairetsu@hairetsu.com" },
     ];
