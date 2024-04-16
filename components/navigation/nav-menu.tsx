@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-
+import {useSession} from "next-auth/react";
 import {cn} from "@/lib/utils"
 
 import {
@@ -11,11 +11,16 @@ import {
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
+    NavigationMenuTrigger, navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import {Button} from '@/components/ui/button'
+import {SignOutButton} from "@/components/authentication/signout-button";
 
-export function NavMenu() {
+interface NavMenuProps {
+    session: any,
+    children: React.ReactNode;
+}
+export function NavMenu({children, session}: NavMenuProps) {
     return (
         <div className="w-full flex  gap-x-2">
             <div className={'hidden w-full justify-center items-center lg:flex'}>
@@ -42,7 +47,7 @@ export function NavMenu() {
                         <NavigationMenuItem>
                             <NavigationMenuTrigger className={'border'}>
                                 <Link href={"/portfolio"} legacyBehavior passHref>
-                                Portfolio
+                                    Portfolio
                                 </Link>
                             </NavigationMenuTrigger>
                             <NavigationMenuContent>
@@ -95,6 +100,18 @@ export function NavMenu() {
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
+                        {(session) && (
+                                <>
+                                    <NavigationMenuItem>
+                                        <Link href={"/dashboard"} legacyBehavior passHref>
+                                            <NavigationMenuLink className={`border ${navigationMenuTriggerStyle()}`}>
+                                                Author Dashboard
+                                            </NavigationMenuLink>
+                                        </Link>
+                                    </NavigationMenuItem>
+                                    {children}
+                                </>
+                        )}
                     </NavigationMenuList>
                 </NavigationMenu>
                 <div className={'flex pl-2 justify-end items-center'}>

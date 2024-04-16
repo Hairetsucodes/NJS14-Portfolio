@@ -12,7 +12,7 @@ export function ContactSection() {
     ];
 
     return (
-        <div className="flex justify-center items-center py-16">
+        <div className="flex justify-center items-center py-8">
             <div className="flex flex-col items-center max-w-3xl">
                 <div className="w-full flex justify-center mb-8">
                     <SitesAnimateHeroTextSmall text={"Let's Connect!"}/>
