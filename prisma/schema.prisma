@@ -13,6 +13,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  ADMIN
+  AUTHOR
+  USER
+}
+
 model Account {
   id                       String  @id @default(cuid())
   userId                   String  @unique
@@ -43,6 +49,7 @@ model User {
   emailVerified DateTime?
   password      String?
   username      String?    @unique
+  role          UserRole   @default(USER)
   image         String?
   accounts      Account[]
   BlogPost      BlogPost[]

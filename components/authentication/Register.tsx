@@ -50,7 +50,7 @@ export default function Register() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center ">
+        <div className="pt-8 flex items-center justify-center ">
             <div className="max-w-md w-full space-y-8 p-10 bg-slate-900 border shadow-md rounded-md">
                 <div className="flex justify-center">
                     <ThemeImage
