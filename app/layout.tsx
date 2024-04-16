@@ -36,7 +36,7 @@ export default async function RootLayout({
     return (
         <html lang="en">
         <body
-            className={`min-h-screen h-full w-full bg-black dark:bg-grid-small-blue-500 sm:overflow-x-hidden bg-grid-small-blue-500 ${inter.className}`}>
+            className={`min-h-screen h-full w-full bg-black dark:bg-grid-small-blue-500 overflow-x-hidden bg-grid-small-blue-500 ${inter.className}`}>
         <header
             className={cn("dark fixed top-0 z-50 flex h-16 w-screen shrink-0 justify-between border-b  bg-gradient-to-b from-background/10 via-background/50 to-background/80 px-4 backdrop-blur-xl")}>
             <div className={'w-full flex justify-center items-center'}>
