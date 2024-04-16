@@ -1,39 +1,31 @@
 import authConfig from '@/auth.config';
 import NextAuth from 'next-auth';
-import { type NextRequest } from "next/server";
-import { publicRoutes, authRoutes, apiAuthPrefix, DEFAULT_LOGIN_REDIRECT } from '@/routes';
+import {publicRoutes, authRoutes, apiAuthPrefix, DEFAULT_LOGIN_REDIRECT} from '@/routes';
+import {NextResponse} from "next/server";
 
-const { auth } = NextAuth(authConfig);
+const {auth} = NextAuth(authConfig);
 
-// @ts-ignore
-export default auth((req: NextRequest) => {
-    const { nextUrl } = req;
-    // @ts-ignore
+export default auth((req) => {
+    const {nextUrl} = req;
     const isLoggedIn = !!req.auth;
     const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
     const isPublicRoute = publicRoutes.some(route => nextUrl.pathname === route || nextUrl.pathname.startsWith('/blog'));
     const isAuthRoute = authRoutes.includes(nextUrl.pathname);
-
     if (isApiAuthRoute) {
-        return null;
+        return NextResponse.next();
     }
-
     if (isAuthRoute) {
         if (isLoggedIn) {
             return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
         }
-        return null;
+        return NextResponse.next();
     }
-
-    if (isPublicRoute && isLoggedIn) {
-        return null;
-    }
-
     if (!isLoggedIn && !isPublicRoute) {
-        return Response.redirect(new URL('/', nextUrl));
+        return Response.redirect(new URL('/signin', nextUrl));
     }
+    return NextResponse.next();
 
-    return null;
+
 });
 
 export const config = {
