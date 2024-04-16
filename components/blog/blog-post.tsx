@@ -29,7 +29,7 @@ export default function BlogPost({postData}: BlogPostProps) {
     }
 
     return (
-        <div className="w-full justify-center pt-20 flex flex-grow ">
+        <div className="w-full justify-center flex flex-grow pt-8">
                 <div className="px-8 p-4 bg-card rounded-lg border">
                     <motion.div
                         initial={{opacity: 0}}
