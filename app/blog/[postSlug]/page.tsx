@@ -1,8 +1,7 @@
 'use client'
 import {useParams} from "next/navigation";
 import {useEffect, useState} from "react";
-import {NavMenu} from "@/components/navigation/nav-menu";
-import {Footer} from "@/components/Footer";
+
 import {cn} from "@/lib/utils";
 import BlogPost from '@/components/blog/blog-post'
 import {getPost} from "@/data/blog";

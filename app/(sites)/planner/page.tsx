@@ -1,12 +1,9 @@
 'use client'
-import {NavMenu} from "@/components/navigation/nav-menu";
-import {cn} from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import SitesAnimateHeroText from "@/components/animations/sites-animation-hero-text";
 import {motion} from "framer-motion";
 import React from "react";
-import {Footer} from "@/components/Footer";
 import {Button} from "@/components/ui/button";
 
 
