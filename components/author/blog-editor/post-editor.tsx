@@ -168,7 +168,7 @@ export default function BlogEditor() {
                             />
                         </div>
                         <div className={"w-full flex"}>
-                            <Button className="w-full m-4" onClick={() => {
+                            <Button type="button" className="w-full m-4" onClick={() => {
                                 setIsPreview(!isPreview)
                             }}>Toggle Post Preview</Button>
                             <Button type="submit" className="w-full m-4">Submit Edited Post</Button>
