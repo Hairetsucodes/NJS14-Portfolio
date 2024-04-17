@@ -86,7 +86,7 @@ export default function BlogPage({posts}: BlogPageProps) {
                         <div className="md:w-1/3 grid grid-cols-1 gap-4">
                             {posts.slice(1, 3).map((post, index) => (
                                 <article key={index} className="bg-card border text-center rounded-lg p-4">
-                                    <div className={'w-full flex p-2 items-center justify-center'}>
+                                    <div className={'w-full flex  items-center justify-center'}>
                                         <Link
                                             href={`/blog/${post.slug}`}
                                         >
@@ -99,27 +99,31 @@ export default function BlogPage({posts}: BlogPageProps) {
                                             />
                                         </Link>
                                     </div>
-                                    <Link
-                                        href={`/blog/${post.slug}`}
-                                    >
-                                        <h2 className="text-xl font-semibold mt-2">{post.title}</h2>
-                                    </Link>
-                                    <Link
-                                        href={`/blog/${post.slug}`}
-                                    >
-                                        <p className="text-gray-600 text-center font-semibold">
+                                    <div className={'pb-2'}>
+                                        <Link
+                                            href={`/blog/${post.slug}`}
+                                        >
+                                            <h2 className="text-xl font-semibold pt-2">{post.title}</h2>
+                                        </Link>
 
-                                            {new Date(post.date).toLocaleDateString('en-US', {
-                                                year: 'numeric',
-                                                month: 'long',
-                                                day: 'numeric',
-                                            })}
-                                        </p>
-                                    </Link>
+                                        <Link
+                                            href={`/blog/${post.slug}`}
+                                        >
+                                            <p className="text-gray-600 text-center font-semibold">
+
+                                                {new Date(post.date).toLocaleDateString('en-US', {
+                                                    year: 'numeric',
+                                                    month: 'long',
+                                                    day: 'numeric',
+                                                })}
+                                            </p>
+                                        </Link>
+                                    </div>
+
                                     <Link
                                         href={`/blog/${post.slug}`}
                                     >
-                                        <Button variant={'secondary'} className={'mt-4'}>
+                                        <Button variant={'secondary'} className={'p-4'}>
                                             Read More
                                         </Button>
                                     </Link>
