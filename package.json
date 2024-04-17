@@ -29,6 +29,7 @@
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@react-three/fiber": "^8.16.1",
+    "@sentry/nextjs": "^7.105.0",
     "@types/mdx": "^2.0.12",
     "@types/react-syntax-highlighter": "^15.5.11",
     "@uiw/react-codemirror": "^4.21.25",
