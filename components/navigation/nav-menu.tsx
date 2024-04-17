@@ -2,8 +2,9 @@
 
 import * as React from "react"
 import Link from "next/link"
-import {cn} from "@/lib/utils"
-
+import { cn } from "@/lib/utils"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { ChevronDownIcon } from "@radix-ui/react-icons"
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -12,13 +13,13 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger, navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
 interface NavMenuProps {
     session: any,
     children: React.ReactNode;
 }
-export function NavMenu({children, session}: NavMenuProps) {
+export function NavMenu({ children, session }: NavMenuProps) {
     return (
         <div className="w-full flex  gap-x-2">
             <div className={'hidden w-full justify-center items-center lg:flex'}>
@@ -53,7 +54,7 @@ export function NavMenu({children, session}: NavMenuProps) {
                                     <li className="row-span-3">
                                         <NavigationMenuLink asChild>
                                             <a className="flex h-full w-full select-none flex-col hover:bg-slate-700 justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                               href={"/portfolio"}
+                                                href={"/portfolio"}
                                             >
                                                 <div className="mb-2 mt-4 text-lg font-medium">
                                                     Portfolio
@@ -98,36 +99,51 @@ export function NavMenu({children, session}: NavMenuProps) {
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
+                        <div className={'flex pl-2 justify-end items-center'}>
+                            <Link href={"https://github.com/Hairetsucodes/NJS14-Portfolio"}>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    className="w-6 h-6"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </Link>
+                        </div>
                         {session?.user?.role === 'ADMIN' || session?.user?.role === 'AUTHOR' ? (
                             <>
-                                <NavigationMenuItem>
-                                    <Link href={"/dashboard"} legacyBehavior passHref>
-                                        <NavigationMenuLink className={`border ${navigationMenuTriggerStyle()}`}>
-                                            Author Dashboard
-                                        </NavigationMenuLink>
-                                    </Link>
-                                </NavigationMenuItem>
-                                {children}
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger className={'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground p-[.35rem] rounded-lg'}>
+                                        <div className="w-full flex items-center px-2">
+                                            {session?.user?.name}
+                                            <ChevronDownIcon
+                                                className="h-3 w-3 ml-1 transition duration-300 group-data-[state=open]:rotate-180"
+                                                aria-hidden="true"
+                                            />
+                                        </div>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent>
+                                        <DropdownMenuLabel>{session?.user?.role} Account</DropdownMenuLabel>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuItem>
+                                            <Link href={"/dashboard"} legacyBehavior passHref>
+                                         Dashboard
+                                            </Link>
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem>
+                                            {children}
+                                        </DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
                             </>
                         ) : null}
                     </NavigationMenuList>
                 </NavigationMenu>
-                <div className={'flex pl-2 justify-end items-center'}>
-                    <Link href={"https://github.com/Hairetsucodes/NJS14-Portfolio"}>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            className="w-6 h-6"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
-                    </Link>
-                </div>
             </div>
 
             <div className={'flex w-full justify-center items-center lg:hidden'}>
@@ -169,7 +185,7 @@ export function NavMenu({children, session}: NavMenuProps) {
                                     <li className="row-span-3">
                                         <NavigationMenuLink asChild>
                                             <a className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                               href={"/portfolio"}
+                                                href={"/portfolio"}
                                             >
                                                 <div className="mb-2 mt-4 text-lg font-medium">
                                                     Portfolio
@@ -231,7 +247,7 @@ export function NavMenu({children, session}: NavMenuProps) {
 const ListItem = React.forwardRef<
     React.ElementRef<"a">,
     React.ComponentPropsWithoutRef<"a">
->(({className, title, children, ...props}, ref) => {
+>(({ className, title, children, ...props }, ref) => {
     return (
         <li>
             <NavigationMenuLink asChild>
