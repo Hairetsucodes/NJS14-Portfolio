@@ -42,10 +42,18 @@ interface BlogEditorProps {
 }
 
 export default function BlogEditor({postData}: BlogEditorProps) {
-    const [content, setContent] = useState('');
+    if (postData == null) return null;
+    const [content, setContent] = useState(postData.content);
     const [isPreview, setIsPreview] = useState(false);
     const form = useForm<z.infer<typeof NewBlogSchema>>({
         resolver: zodResolver(NewBlogSchema),
+        defaultValues: {
+            title: postData.title,
+            img: postData.img,
+            category: postData.category,
+            content: postData.content,
+        }
+        
     })
     const router = useRouter()
 
@@ -58,7 +66,6 @@ export default function BlogEditor({postData}: BlogEditorProps) {
         form.reset()
         router.push(`/blog/${postData.slug}`);
     }
-
     const options = {code: CodeBlock}
     return (
         <div className="min-h-screen flex flex-col items-center py-10">
