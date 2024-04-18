@@ -1,8 +1,8 @@
 'use client'
 import Image from 'next/image';
 import Link from 'next/link';
-import {Button} from "@/components/ui/button";
-import {motion} from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 interface BlogPageProps {
     posts: {
@@ -15,25 +15,25 @@ interface BlogPageProps {
         slug: string;
         date: Date;
         userId: string | null;
-        }[] | null,
-    }
+    }[] | null,
+}
 
-export default function BlogPage({posts}: BlogPageProps) {
-    if (posts == null)  {
+export default function BlogPage({ posts }: BlogPageProps) {
+    if (posts == null) {
         return null
     }
     return (
         <>
             <motion.div
-                initial={{opacity: 0}}
-                animate={{opacity: 1}}
-                transition={{duration: 0.5}}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
                 className="p-5"
             >
                 <motion.section
-                    initial={{opacity: 0, y: 20}}
-                    animate={{opacity: 1, y: 0}}
-                    transition={{duration: 0.5, delay: 0.2}}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                     className="m-4"
                 >
                     <div className="flex flex-col md:flex-row gap-4">
@@ -133,14 +133,14 @@ export default function BlogPage({posts}: BlogPageProps) {
                     </div>
                 </motion.section>
                 <motion.section
-                    initial={{opacity: 0, y: 20}}
-                    animate={{opacity: 1, y: 0}}
-                    transition={{duration: 0.5, delay: 0.2}}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                     className="grid m-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4"
                 >
                     {posts.slice(3).map((post, index) => (
                         <article key={index}
-                                 className="bg-card border text-center rounded-lg p-6 flex flex-col justify-between h-full">
+                            className="bg-card border text-center rounded-lg p-6 flex flex-col justify-between h-full">
                             <Image
                                 src="/comp.png"
                                 alt="Blog Post"

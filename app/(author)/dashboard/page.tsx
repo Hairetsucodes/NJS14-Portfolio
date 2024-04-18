@@ -1,6 +1,6 @@
 import AuthorBlogPage from "@/components/author/author-blog-page";
-import {cn} from "@/lib/utils";
-import {getPosts} from "@/data/blog";
+import { cn } from "@/lib/utils";
+import { getPosts } from "@/data/blog";
 
 export default async function Dashboard() {
     const posts = await getPosts()
@@ -8,7 +8,7 @@ export default async function Dashboard() {
     return (
         <main className=" ">
             <div className={cn("")}>
-            <AuthorBlogPage posts={posts} />
+                <AuthorBlogPage posts={posts} />
             </div>
         </main>
     );

@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import {insertContact} from "@/data/contact";
+import { insertContact } from "@/data/contact";
 
 export function ContactForm() {
     // 1. Define your form.

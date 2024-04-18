@@ -12,10 +12,10 @@ type Card = {
 };
 
 export const CardStack = ({
-                              items,
-                              offset,
-                              scaleFactor,
-                          }: {
+    items,
+    offset,
+    scaleFactor,
+}: {
     items: Card[];
     offset?: number;
     scaleFactor?: number;

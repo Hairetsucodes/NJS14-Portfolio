@@ -132,7 +132,7 @@ export function NavMenu({ children, session }: NavMenuProps) {
                                         <DropdownMenuSeparator />
                                         <DropdownMenuItem>
                                             <Link href={"/dashboard"} legacyBehavior passHref>
-                                         Dashboard
+                                                Dashboard
                                             </Link>
                                         </DropdownMenuItem>
                                         <DropdownMenuItem>

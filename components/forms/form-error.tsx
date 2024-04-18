@@ -7,7 +7,7 @@ interface FormErrorProps {
 }
 
 
-export default function FormError({message}: FormErrorProps) {
+export default function FormError({ message }: FormErrorProps) {
     if (!message) return null
     return (
         <div className="flex items-center bg-destructive text-red-600 text-sm">

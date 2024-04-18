@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 
-import {cn} from "@/lib/utils"
+import { cn } from "@/lib/utils"
 
 import {
     NavigationMenu,
@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/navigation-menu"
 
 
-export function AuthorNavMenu({children}: { children: React.ReactNode }) {
+export function AuthorNavMenu({ children }: { children: React.ReactNode }) {
 
     return (
         <div>
@@ -43,7 +43,7 @@ export function AuthorNavMenu({children}: { children: React.ReactNode }) {
                                 <li className="row-span-3">
                                     <NavigationMenuLink asChild>
                                         <a className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                           href={"/portfolio"}
+                                            href={"/portfolio"}
                                         >
                                             <div className="mb-2 mt-4 text-lg font-medium">
                                                 Portfolio
@@ -118,7 +118,7 @@ export function AuthorNavMenu({children}: { children: React.ReactNode }) {
 const ListItem = React.forwardRef<
     React.ElementRef<"a">,
     React.ComponentPropsWithoutRef<"a">
->(({className, title, children, ...props}, ref) => {
+>(({ className, title, children, ...props }, ref) => {
     return (
         <li>
             <NavigationMenuLink asChild>

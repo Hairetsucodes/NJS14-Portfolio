@@ -1,9 +1,9 @@
 "use client";
 
-import {useEffect, useState} from "react";
-import {motion} from "framer-motion";
-import {cn} from "@/lib/utils";
-import {Card, CardContent} from "@/components/ui/card"
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { Card, CardContent } from "@/components/ui/card"
 import {
     Carousel,
     CarouselContent,
@@ -11,9 +11,9 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import {Button} from '@/components/ui/button'
-import {RadioGroup, RadioGroupItem} from "@/components/ui/radio-group";
-import {Label} from "@/components/ui/label";
+import { Button } from '@/components/ui/button'
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 type Tab = {
     title: string;
@@ -33,14 +33,14 @@ interface TabsInterface {
 }
 
 export const Tabs = ({
-                         selectedOption,
-                         setSelectedOption,
-                         tabs: propTabs,
-                         containerClassName,
-                         activeTabClassName,
-                         tabClassName,
-                         contentClassName,
-                     }: TabsInterface) => {
+    selectedOption,
+    setSelectedOption,
+    tabs: propTabs,
+    containerClassName,
+    activeTabClassName,
+    tabClassName,
+    contentClassName,
+}: TabsInterface) => {
     const [active, setActive] = useState<Tab>(propTabs[0]);
     const [tabs, setTabs] = useState<Tab[]>(propTabs);
 
@@ -53,6 +53,7 @@ export const Tabs = ({
     };
     useEffect(() => {
         moveSelectedTabToTop(0)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedOption]);
     const [hovering, setHovering] = useState(false);
 
@@ -110,8 +111,8 @@ export const Tabs = ({
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious/>
-                    <CarouselNext/>
+                    <CarouselPrevious />
+                    <CarouselNext />
                 </Carousel>
             </div>
             <div
@@ -122,11 +123,11 @@ export const Tabs = ({
                         onValueChange={setSelectedOption}
                     >
                         <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="History" id="History"/>
+                            <RadioGroupItem value="History" id="History" />
                             <Label htmlFor="History">History</Label>
                         </div>
                         <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="Skills" id="Skills"/>
+                            <RadioGroupItem value="Skills" id="Skills" />
                             <Label htmlFor="Skills">Skills</Label>
                         </div>
                     </RadioGroup>
@@ -153,7 +154,7 @@ export const Tabs = ({
                                 {active.value === tab.value && (
                                     <motion.div
                                         layoutId="clickedbutton"
-                                        transition={{type: "spring", bounce: 0.3, duration: 0.6}}
+                                        transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                                         className={cn(
                                             "absolute inset-0 bg-slate-800 dark:bg-zinc-800 rounded-full ",
                                             activeTabClassName
@@ -161,8 +162,8 @@ export const Tabs = ({
                                     />
                                 )}
                                 <span className="relative block text-blue-400">
-                        {tab.title}
-                    </span>
+                                    {tab.title}
+                                </span>
                             </Button>
                         </li>
                     ))}
@@ -179,10 +180,10 @@ export const Tabs = ({
     );
 };
 export const FadeInDiv = ({
-                              className,
-                              tabs,
-                              hovering,
-                          }: {
+    className,
+    tabs,
+    hovering,
+}: {
     className?: string;
     key?: string;
     tabs: Tab[];

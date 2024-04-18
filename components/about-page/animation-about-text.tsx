@@ -30,15 +30,15 @@ export default function AnimationAboutText({ text, duration }: AnimateHeroTextPr
 
     return (
         <div className={''}>
-        <motion.span
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            style={{ opacity }}
-            className="text-md md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-blue-400 to-blue-800 py-8"
-        >
+            <motion.span
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1 }}
+                style={{ opacity }}
+                className="text-md md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-blue-400 to-blue-800 py-8"
+            >
 
-            {displayText}
-        </motion.span>
+                {displayText}
+            </motion.span>
 
         </div>
     );

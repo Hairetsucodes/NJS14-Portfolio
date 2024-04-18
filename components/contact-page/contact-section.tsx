@@ -15,7 +15,7 @@ export function ContactSection() {
         <div className="flex justify-center items-center py-8">
             <div className="flex flex-col items-center max-w-3xl">
                 <div className="w-full flex justify-center mb-8">
-                    <SitesAnimateHeroTextSmall text={"Let's Connect!"}/>
+                    <SitesAnimateHeroTextSmall text={"Let's Connect!"} />
                 </div>
                 <motion.div
                     initial={{ opacity: 0 }}
