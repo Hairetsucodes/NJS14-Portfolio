@@ -42,18 +42,16 @@ interface BlogEditorProps {
 }
 
 export default function BlogEditor({postData}: BlogEditorProps) {
-    if (postData == null) return null;
-    const [content, setContent] = useState(postData.content);
+    const [content, setContent] = useState(postData?.content || '');
     const [isPreview, setIsPreview] = useState(false);
     const form = useForm<z.infer<typeof NewBlogSchema>>({
         resolver: zodResolver(NewBlogSchema),
         defaultValues: {
-            title: postData.title,
-            img: postData.img,
-            category: postData.category,
-            content: postData.content,
+            title: postData?.title || '',
+            img: postData?.img || '',
+            category: postData?.category || '',
+            content: postData?.content || '',
         }
-        
     })
     const router = useRouter()
 
@@ -67,6 +65,9 @@ export default function BlogEditor({postData}: BlogEditorProps) {
         router.push(`/blog/${postData.slug}`);
     }
     const options = {code: CodeBlock}
+
+    if (postData == null) return null;
+
     return (
         <div className="min-h-screen flex flex-col items-center py-10">
             <div className="bg-card border w-full max-w-4xl p-8 rounded-lg shadow-md">
