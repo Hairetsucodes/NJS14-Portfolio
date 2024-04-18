@@ -8,7 +8,6 @@ export default function Home() {
             <div className={'pt-12'}>
                 <HeroSection />
                 <SitesSection />
-                
             </div>
         </main>
     );

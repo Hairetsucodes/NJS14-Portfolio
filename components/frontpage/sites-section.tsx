@@ -12,16 +12,13 @@ export function SitesSection() {
 
     return (
         <div className={"mt-8 mx-10"}>
-            {/* motion dive to fade in from the back*/}
             <div className="flex flex-col lg:flex-row justify-center w-full gap-4 mx-auto">
-
                 <motion.div
                     initial={{ x: -100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
                     <div className={' overflow-hidden'}>
-
                         <Card url={'./components'}
                             description={'Streamline your web development workflow with AI-assisted component creation. This powerful tool leverages artificial intelligence to generate reusable, efficient, and customizable components tailored to your specific project requirements. Save time, reduce manual coding efforts, and ensure consistency across your web application.'}
                             title="Components"
@@ -132,7 +129,7 @@ const Card = ({
             onMouseLeave={() => setHovered(false)}
             className=" group/canvas-card flex items-center rounded justify-center dark:border-blue-500 max-w-sm w-full mx-auto  min-h-[22rem] relative"
         >
-        
+
             <AnimatePresence>
                 {hovered && (
                     <motion.div

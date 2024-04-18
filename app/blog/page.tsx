@@ -1,6 +1,6 @@
 import BlogPage from "@/components/blog/blog-page";
-import {cn} from "@/lib/utils";
-import {getPosts} from "@/data/blog";
+import { cn } from "@/lib/utils";
+import { getPosts } from "@/data/blog";
 
 export const dynamic = 'force-dynamic'
 

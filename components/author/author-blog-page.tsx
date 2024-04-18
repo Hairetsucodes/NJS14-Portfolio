@@ -99,7 +99,7 @@ export default function AuthorBlogPage({ posts }: BlogPageProps) {
                                 </div>
                             </article>
                         )}
-                         <div className="md:w-1/3 grid grid-cols-1 gap-4">
+                        <div className="md:w-1/3 grid grid-cols-1 gap-4">
                             {posts.slice(1, 3).map((post, index) => (
                                 <article key={index} className="bg-card border text-center rounded-lg p-4">
                                     <div className={'w-full flex  items-center justify-center'}>

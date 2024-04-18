@@ -1,5 +1,5 @@
 'use server'
-import {db} from "@/lib/db";
+import { db } from "@/lib/db";
 
 
 export const deletePost = async (id: number) => {
@@ -52,7 +52,7 @@ export const getPost = async (slug: string) => {
     try {
         return await db.blogPost.findUnique(
             {
-                where: {slug: slug}
+                where: { slug: slug }
             }
         )
     } catch (e) {

@@ -1,8 +1,8 @@
 'use client'
 
-import {Spotlight} from "@/components/ui/Spotlight";
-import {AboutTabs} from "@/components/about-page/about-cards-new";
-import {motion} from "framer-motion";
+import { Spotlight } from "@/components/ui/Spotlight";
+import { AboutTabs } from "@/components/about-page/about-cards-new";
+import { motion } from "framer-motion";
 
 export function AboutMe() {
     return (
@@ -13,11 +13,11 @@ export function AboutMe() {
                     fill="#42A5F5"
                 />
             </div>
-            <motion.div initial={{y: -20, opacity: 0}}
-                        animate={{y: 0, opacity: 1}}
-                        transition={{duration: 0.4}}
+            <motion.div initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.4 }}
             >
-                <AboutTabs/>
+                <AboutTabs />
             </motion.div>
         </div>
     );

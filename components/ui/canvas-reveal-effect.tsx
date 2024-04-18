@@ -1,17 +1,17 @@
 "use client";
-import {cn} from "@/lib/utils";
-import {Canvas, useFrame, useThree} from "@react-three/fiber";
-import React, {useMemo, useRef} from "react";
+import { cn } from "@/lib/utils";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
 
 export const CanvasRevealEffect = ({
-                                       animationSpeed = 0.4,
-                                       opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
-                                       colors = [[0, 255, 255]],
-                                       containerClassName,
-                                       dotSize,
-                                       showGradient = true,
-                                   }: {
+    animationSpeed = 0.4,
+    opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
+    colors = [[0, 255, 255]],
+    containerClassName,
+    dotSize,
+    showGradient = true,
+}: {
     animationSpeed?: number;
     opacities?: number[];
     colors?: number[][];
@@ -55,13 +55,13 @@ interface DotMatrixProps {
 }
 
 const DotMatrix: React.FC<DotMatrixProps> = ({
-                                                 colors = [[0, 0, 0]],
-                                                 opacities = [0.04, 0.04, 0.04, 0.04, 0.04, 0.08, 0.08, 0.08, 0.08, 0.14],
-                                                 totalSize = 4,
-                                                 dotSize = 2,
-                                                 shader = "",
-                                                 center = ["x", "y"],
-                                             }) => {
+    colors = [[0, 0, 0]],
+    opacities = [0.04, 0.04, 0.04, 0.04, 0.04, 0.08, 0.08, 0.08, 0.08, 0.14],
+    totalSize = 4,
+    dotSize = 2,
+    shader = "",
+    center = ["x", "y"],
+}) => {
     const uniforms = React.useMemo(() => {
         let colorsArray = [
             colors[0],
@@ -137,16 +137,14 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
         }
         void main() {
             vec2 st = fragCoord.xy;
-            ${
-                center.includes("x")
+            ${center.includes("x")
                     ? "st.x -= abs(floor((mod(u_resolution.x, u_total_size) - u_dot_size) * 0.5));"
                     : ""
-            }
-            ${
-                center.includes("y")
+                }
+            ${center.includes("y")
                     ? "st.y -= abs(floor((mod(u_resolution.y, u_total_size) - u_dot_size) * 0.5));"
                     : ""
-            }
+                }
       float opacity = step(0.0, st.x);
       opacity *= step(0.0, st.y);
 
@@ -179,10 +177,10 @@ type Uniforms = {
     };
 };
 const ShaderMaterial = ({
-                            source,
-                            uniforms,
-                            maxFps = 60,
-                        }: {
+    source,
+    uniforms,
+    maxFps = 60,
+}: {
     source: string;
     hovered?: boolean;
     maxFps?: number;

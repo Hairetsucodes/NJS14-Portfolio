@@ -1,19 +1,19 @@
 'use client'
-import {Input} from "@/components/ui/input";
-import {Button} from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
-import {useState} from "react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useState } from "react";
 import CodeMirror from "@uiw/react-codemirror"
-import {markdown} from '@codemirror/lang-markdown';
+import { markdown } from '@codemirror/lang-markdown';
 import remarkGfm from 'remark-gfm';
-import {EditorView} from "@codemirror/view";
-import {LightEditorTheme} from "@/components/theme/editor-theme";
-import {NewBlogSchema} from "@/schemas";
-import {CodeBlock} from "@/components/ui/Code";
-import {zodResolver} from "@hookform/resolvers/zod"
-import {useForm} from "react-hook-form"
-import {z} from "zod"
+import { EditorView } from "@codemirror/view";
+import { LightEditorTheme } from "@/components/theme/editor-theme";
+import { NewBlogSchema } from "@/schemas";
+import { CodeBlock } from "@/components/ui/Code";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 import Markdown from "react-markdown";
 import {
     Form,
@@ -23,9 +23,9 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
-import {createPost} from "@/data/blog";
-import {toast} from "sonner";
-import {useRouter} from "next/navigation";
+import { createPost } from "@/data/blog";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function BlogEditor() {
     const [markdownInput, setMarkdownInput] = useState('');
@@ -50,7 +50,7 @@ export default function BlogEditor() {
         router.push(`/blog/${slug}`);
     }
 
-    const options = {code: CodeBlock}
+    const options = { code: CodeBlock }
     return (
         <div className="min-h-screen flex flex-col items-center py-10">
             <div className="bg-card border w-full max-w-4xl p-8 rounded-lg shadow-md">
@@ -60,39 +60,39 @@ export default function BlogEditor() {
                         <FormField
                             control={form.control}
                             name="title"
-                            render={({field}) => (
+                            render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Post Title</FormLabel>
                                     <FormControl>
                                         <Input placeholder="The greatest story never told..." {...field} />
                                     </FormControl>
-                                    <FormMessage/>
+                                    <FormMessage />
                                 </FormItem>
                             )}
                         />
                         <FormField
                             control={form.control}
                             name="img"
-                            render={({field}) => (
+                            render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Post Image URL</FormLabel>
                                     <FormControl>
                                         <Input placeholder="google.com/img.png" {...field} />
                                     </FormControl>
-                                    <FormMessage/>
+                                    <FormMessage />
                                 </FormItem>
                             )}
                         />
                         <FormField
                             control={form.control}
                             name="category"
-                            render={({field}) => (
+                            render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Category</FormLabel>
                                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder="Select a category"/>
+                                                <SelectValue placeholder="Select a category" />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
@@ -101,7 +101,7 @@ export default function BlogEditor() {
                                             <SelectItem value="Travel">Travel</SelectItem>
                                         </SelectContent>
                                     </Select>
-                                    <FormMessage/>
+                                    <FormMessage />
                                 </FormItem>
                             )}
                         />
@@ -140,7 +140,7 @@ export default function BlogEditor() {
                                                 </div>
                                             </div>
                                         )}
-                                        <FormMessage/>
+                                        <FormMessage />
                                     </FormItem>
                                 )}
                             />

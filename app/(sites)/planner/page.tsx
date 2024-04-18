@@ -2,20 +2,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import SitesAnimateHeroText from "@/components/animations/sites-animation-hero-text";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import React from "react";
-import {Button} from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 
 export default function Home() {
     return (
         <main className=" ">
-            <motion.div initial={{y: -20, opacity: 0}}
-                        animate={{y: 0, opacity: 1}}
-                        transition={{duration: 0.5, delay: 0.3}}
-                        className="flex flex-col items-center pt-10 pb-8">
+            <motion.div initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex flex-col items-center pt-10 pb-8">
                 <div className={'pb-8'}>
-                    <SitesAnimateHeroText text={'CNTRL Planner'}/>
+                    <SitesAnimateHeroText text={'CNTRL Planner'} />
                 </div>
                 <div className="bg-card border  rounded-lg p-8 md:w-2/3 mb-6 shadow-lg mx-3">
                     <div
@@ -24,16 +24,16 @@ export default function Home() {
                             <div className={"w-full  flex justify-center items-center"}>
                                 <Link href={'https://planner.hairetsu.com'}>
                                     <Image src={'/planner.png'} alt={'Planner App'}
-                                           className="rounded-lg border hover:opacity-70"
-                                           height={400} width={560}/>
+                                        className="rounded-lg border hover:opacity-70"
+                                        height={400} width={560} />
                                 </Link>
                             </div>
                         </div>
                         <div className="md:w-1/2 p-4">
                             <motion.p
-                                initial={{opacity: 0}}
-                                animate={{opacity: 1}}
-                                transition={{delay: 0.8}}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.8 }}
                                 className="max-w-2xl mx-auto text-lg"
                             >
                                 Streamline your planning process with the power of AI. CNTRL Planner breaks down

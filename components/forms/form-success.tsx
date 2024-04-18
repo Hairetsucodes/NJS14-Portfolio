@@ -9,7 +9,7 @@ interface FormSuccessProps {
 }
 
 
-export default function FormSuccess({message}: FormSuccessProps) {
+export default function FormSuccess({ message }: FormSuccessProps) {
     if (!message) return null
     return (
         <div className="flex items-center bg-destructive text-red-600 text-sm">
