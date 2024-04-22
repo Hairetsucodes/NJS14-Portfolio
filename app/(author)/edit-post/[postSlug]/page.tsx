@@ -6,10 +6,10 @@ import { redirect } from "next/navigation";
 
 export default async function Page({ params: { postSlug: postSlug } }: { params: { postSlug: string } }) {
     const session: string | any = await auth()
-    if (session?.user?.role !== "AUTHOR" || "ADMIN") {
-            // Redirect to login page
-            redirect("/");
-    }
+    if (session?.user?.role !== "AUTHOR" && session?.user?.role !== "ADMIN")  {
+        // Redirect to login page
+        redirect("/");
+}
     const postData = await getPost(postSlug)
     return (
         <main className="">

@@ -5,7 +5,9 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 export default async function Dashboard() {
     const session: string | any = await auth()
-    if (session?.user?.role !== "AUTHOR" || "ADMIN") {
+    console.log(session)
+    //if authro or amdmin
+    if (session?.user?.role !== "AUTHOR" && session?.user?.role !== "ADMIN")  {
             // Redirect to login page
             redirect("/");
     }
