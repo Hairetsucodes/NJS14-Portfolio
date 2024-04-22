@@ -6,10 +6,8 @@ import { redirect } from "next/navigation";
 export default async function Dashboard() {
     const session: string | any = await auth()
     console.log(session)
-    //if authro or amdmin
-    if (session?.user?.role !== "AUTHOR" && session?.user?.role !== "ADMIN")  {
-            // Redirect to login page
-            redirect("/");
+    if (session?.user?.role !== "AUTHOR" && session?.user?.role !== "ADMIN") {
+        redirect("/");
     }
     const posts = await getPosts()
 

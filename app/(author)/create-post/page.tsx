@@ -5,11 +5,9 @@ import { redirect } from "next/navigation";
 
 export default async function Page() {
     const session: string | any = await auth()
-    if (session?.user?.role !== "AUTHOR" && session?.user?.role !== "ADMIN")  {
-        // Redirect to login page
+    if (session?.user?.role !== "AUTHOR" && session?.user?.role !== "ADMIN") {
         redirect("/");
-}
-
+    }
 
     return (
         <main className="">

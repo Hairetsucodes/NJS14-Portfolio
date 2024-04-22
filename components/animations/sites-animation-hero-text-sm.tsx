@@ -17,7 +17,7 @@ export default function SitesAnimateHeroTextSmall({ text }: AnimateHeroTextProps
     );
 
     useEffect(() => {
-        const duration = text.length * 0.06; // Adjust the multiplier as needed
+        const duration = text.length * 0.06;
         void animate(count, text.length, {
             type: "tween",
             duration: duration,
