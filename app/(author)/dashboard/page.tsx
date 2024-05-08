@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 import { getPosts } from "@/data/blog";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+
+
 export default async function Dashboard() {
     const session: string | any = await auth()
     console.log(session)
@@ -10,11 +12,12 @@ export default async function Dashboard() {
         redirect("/");
     }
     const posts = await getPosts()
+ 
 
     return (
         <main className=" ">
             <div className={cn("")}>
-                <AuthorBlogPage posts={posts} />
+                <AuthorBlogPage posts={posts.reverse()} />
             </div>
         </main>
     );

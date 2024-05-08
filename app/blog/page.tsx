@@ -10,7 +10,7 @@ export default async function Page() {
     return (
         <main className="">
             <div className={cn("")}>
-                <BlogPage posts={posts} />
+                <BlogPage posts={posts.reverse()} />
             </div>
         </main>
     );

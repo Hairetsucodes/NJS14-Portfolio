@@ -1,4 +1,5 @@
 'use client'
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -51,18 +52,27 @@ export default function BlogEditor({ postData }: BlogEditorProps) {
             img: postData?.img || '',
             category: postData?.category || '',
             content: postData?.content || '',
+            tags: []
         }
     })
     const router = useRouter()
 
     async function onSubmit(values: z.infer<typeof NewBlogSchema>) {
+
         if (postData == null) {
-            return null
+            console.error('postData is null');
+            return;
         }
-        await editPost(postData.id, values.title, values.content, values.category, values.img);
-        toast("Blog Edited")
-        form.reset()
-        router.push(`/blog/${postData.slug}`);
+    
+        try {
+            await editPost(postData.id, values.title, values.content, values.category, values.img);
+            toast("Blog Edited");
+            form.reset();
+            router.push(`/blog/${postData.slug}`);
+        } catch (error) {
+            console.error('Error editing blog post:', error);
+            // Handle the error, show an error message, etc.
+        }
     }
     const options = { code: CodeBlock }
 
