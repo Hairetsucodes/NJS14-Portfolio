@@ -58,21 +58,13 @@ export default function BlogEditor({ postData }: BlogEditorProps) {
     const router = useRouter()
 
     async function onSubmit(values: z.infer<typeof NewBlogSchema>) {
-
         if (postData == null) {
-            console.error('postData is null');
-            return;
+            return null
         }
-    
-        try {
-            await editPost(postData.id, values.title, values.content, values.category, values.img);
-            toast("Blog Edited");
-            form.reset();
-            router.push(`/blog/${postData.slug}`);
-        } catch (error) {
-            console.error('Error editing blog post:', error);
-            // Handle the error, show an error message, etc.
-        }
+        await editPost(postData.id, values.title, values.content, values.category, values.img);
+        toast("Blog Edited")
+        form.reset()
+        router.push(`/blog/${postData.slug}`);
     }
     const options = { code: CodeBlock }
 
