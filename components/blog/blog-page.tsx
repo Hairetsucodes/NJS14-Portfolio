@@ -22,6 +22,7 @@ export default function BlogPage({ posts }: BlogPageProps) {
     if (posts == null) {
         return null
     }
+    const reversePosts = [...posts].reverse()
     return (
         <>
             <motion.div
@@ -37,7 +38,7 @@ export default function BlogPage({ posts }: BlogPageProps) {
                     className="m-4"
                 >
                     <div className="flex flex-col md:flex-row gap-4">
-                        {posts.length > 0 && (
+                        {reversePosts.length > 0 && (
                             <article
                                 className="bg-card border rounded-lg  md:w-2/3 flex  items-center justify-center">
                                 <div className="p-4">
@@ -45,7 +46,7 @@ export default function BlogPage({ posts }: BlogPageProps) {
                                         <div>
                                             <Link href={`/blog/${posts[0].slug}`}>
                                                 <Image
-                                                    src="/planner.png"
+                                                    src={`${posts[0].img}`}
                                                     alt="Most Recent Blog Post"
                                                     width={1280}
                                                     height={800}
@@ -84,7 +85,7 @@ export default function BlogPage({ posts }: BlogPageProps) {
                             </article>
                         )}
                         <div className="md:w-1/3 grid grid-cols-1 gap-4">
-                            {posts.slice(1, 3).map((post, index) => (
+                            {reversePosts.slice(1, 3).map((post, index) => (
                                 <article key={index} className="bg-card border text-center rounded-lg p-4">
                                     <div className={'w-full flex  items-center justify-center'}>
                                         <Link
@@ -138,7 +139,7 @@ export default function BlogPage({ posts }: BlogPageProps) {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="grid m-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4"
                 >
-                    {posts.slice(3).map((post, index) => (
+                    {reversePosts.slice(3).map((post, index) => (
                         <article key={index}
                             className="bg-card border text-center rounded-lg p-6 flex flex-col justify-between h-full">
                             <Image
