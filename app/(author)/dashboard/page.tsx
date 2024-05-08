@@ -7,13 +7,14 @@ import { redirect } from "next/navigation";
 
 export default async function Dashboard() {
     const session: string | any = await auth()
-    console.log(session)
     if (session?.user?.role !== "AUTHOR" && session?.user?.role !== "ADMIN") {
         redirect("/");
     }
     const posts = await getPosts()
  
-
+    if (posts == null) {
+        return null
+    }
     return (
         <main className=" ">
             <div className={cn("")}>

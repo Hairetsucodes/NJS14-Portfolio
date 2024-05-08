@@ -6,7 +6,9 @@ export const dynamic = 'force-dynamic'
 
 export default async function Page() {
     const posts = await getPosts()
-
+    if (posts == null) {
+        return null
+    }
     return (
         <main className="">
             <div className={cn("")}>
