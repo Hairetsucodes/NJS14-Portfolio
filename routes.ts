@@ -8,6 +8,7 @@ export const publicRoutes = [
     "/chat",
     "/planner",
     "/components",
+    "/decipher",
     "/blog/:slug"
 ];
 

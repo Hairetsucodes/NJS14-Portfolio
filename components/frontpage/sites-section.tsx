@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import LogoLight from "@/assets/logo-light.png";
+import DecipherLogo from "@/assets/decipher.png";
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import { cn } from "@/lib/utils";
@@ -13,6 +14,75 @@ export function SitesSection() {
     <div className={"mt-8 mx-10"}>
       <div className="flex flex-col lg:flex-row justify-center w-full gap-4 mx-auto">
         <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <Card
+            url={"/decipher"}
+            screenshot={"/decipher-ss1.png"}
+            description={
+              "Decipher is a powerful server-side tool designed to protect high-traffic applications from fraud and spam. It combines smart technology with real-time monitoring to keep your platform safe from malicious activities. With custom machine learning models, real-time API tracking, secure server-side operations, and efficient data management, Decipher offers comprehensive protection tailored to your needs. Built for scale and optimized for performance, it can handle millions of requests per day while maintaining responsiveness."
+            }
+            title="Fraud Detection"
+            icon={
+              <ThemeImage
+                className={cn("rounded-lg p-2")}
+                alt="logo"
+                srcLight={DecipherLogo}
+                srcDark={DecipherLogo}
+                width={160}
+                height={50}
+              />
+            }
+          >
+            <CanvasRevealEffect
+              animationSpeed={3}
+              containerClassName="bg-transparent"
+              colors={[
+                [59, 130, 246],
+                [139, 92, 246],
+              ]}
+              dotSize={2}
+            />
+            {/* Radial gradient for the cute fade */}
+            <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
+          </Card>
+        </motion.div>
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <Card
+            url={"./hiringfm"}
+            screenshot={"/hiring-ss.png"}
+            description={
+              "Empower your career with Hiring FM. Discover dream jobs directly from top employers, bypass recruiters, and take control of your career path. With 2.4M+ opportunities, create profiles, craft resumes, and access job directories. Choose flexible plans to invest in your future success. Unlock endless possibilities today."
+            }
+            title=""
+            icon={
+              <Image
+                className={cn("")}
+                alt="logo"
+                src="/logo-dark.png"
+                width={124}
+                height={43}
+              />
+            }
+          >
+            <CanvasRevealEffect
+              animationSpeed={3}
+              containerClassName="bg-transparent"
+              colors={[
+                [59, 130, 246],
+                [139, 92, 246],
+              ]}
+              dotSize={2}
+            />
+          </Card>
+        </motion.div>
+        <motion.div
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -24,7 +94,7 @@ export function SitesSection() {
                 "Streamline your web development workflow with AI-assisted component creation. This powerful tool leverages artificial intelligence to generate reusable, efficient, and customizable components tailored to your specific project requirements. Save time, reduce manual coding efforts, and ensure consistency across your web application."
               }
               title="Components"
-              screenshot={"/comp-thumb.png"}
+              screenshot={"/components-ss.png"}
               icon={
                 <ThemeImage
                   className={cn("rounded-lg p-2")}
@@ -48,6 +118,8 @@ export function SitesSection() {
             </Card>
           </div>
         </motion.div>
+      </div>
+      <div className="flex flex-col lg:flex-row justify-center w-full gap-4 mx-auto">
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -90,17 +162,18 @@ export function SitesSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <Card
-            url={"./hiringfm"}
-            screenshot={"/hiringfm.png"}
+            url={"./chat"}
+            screenshot={"/chat-thumb.png"}
             description={
-              "Empower your career with Hiring FM. Discover dream jobs directly from top employers, bypass recruiters, and take control of your career path. With 1.6M+ opportunities, create profiles, craft resumes, and access job directories. Choose flexible plans to invest in your future success. Unlock endless possibilities today."
+              "Experience a powerful, full-featured chat-bot that leverages vector storage for efficient document retrieval, seamlessly integrates with X.com API, performs web searches, generates images, and offers a wide range of advanced capabilities to enhance your conversational interactions."
             }
-            title=""
+            title="Chat"
             icon={
-              <Image
-                className={cn("")}
+              <ThemeImage
+                className={cn("rounded-lg p-2")}
                 alt="logo"
-                src="/logo-dark.png"
+                srcLight={LogoLight}
+                srcDark={LogoLight}
                 width={124}
                 height={43}
               />

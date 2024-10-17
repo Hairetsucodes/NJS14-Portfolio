@@ -17,7 +17,8 @@ export function HeroSection() {
                 <AnimateHeroText text="Welcome to Hairetsu's portfolio." />
                 <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
                     className="relative z-10 mx-auto text-lg lg:text-2xl md:text-xl font-medium text-white mt-4 max-w-2xl"> I&apos;m
-                    Thomas Whidden, also known as Hairetsu. I am a passionate developer who thrives on learning and
+                    Thomas Whidden, also known as Hairetsu. I am a software developer who loves to learn and understand deeply how things work. 
+                    I thrive on creating innovative solutions to problems. If you&apos;re looking to collaborate or add a valuable
                     creating innovative solutions to problems. If you&apos;re looking to collaborate or add a valuable
                     addition to your team, I&apos;d love to connect and discuss how I can contribute.
                 </motion.p>
