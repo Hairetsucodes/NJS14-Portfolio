@@ -35,10 +35,9 @@ export function HeroSection() {
           </div>
           <p className="max-w-[600px] text-muted-foreground md:text-xl">
             With over 20 years in the industry, my journey began in hacking and
-            exploiting web vulnerabilities and APIs. This foundation evolved into
-            a comprehensive skill set in full stack development, now encompassing
-            Machine Learning and AI. I blend security expertise with cutting-edge
-            development practices to create robust, innovative solutions.
+            exploiting web vulnerabilities and APIs. This foundation evolved
+            into full stack development, and now encompassing Machine Learning
+            and AI.
           </p>
           <Button
             className="inline-flex items-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-10 py-2 px-4"
