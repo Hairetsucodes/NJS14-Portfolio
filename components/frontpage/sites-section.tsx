@@ -14,15 +14,15 @@ export function SitesSection() {
     <div className={"mt-8 mx-10"}>
       <div className="flex flex-col lg:flex-row justify-center w-full gap-4 mx-auto">
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Card
             url={"/decipher"}
             screenshot={"/decipher-ss1.png"}
             description={
-              "Decipher is a powerful server-side tool designed to protect high-traffic applications from fraud and spam. It combines smart technology with real-time monitoring to keep your platform safe from malicious activities. With custom machine learning models, real-time API tracking, secure server-side operations, and efficient data management, Decipher offers comprehensive protection tailored to your needs. Built for scale and optimized for performance, it can handle millions of requests per day while maintaining responsiveness."
+              "A robust server-side tool I developed to protect high-traffic applications from fraud and spam. It features real-time monitoring, custom machine learning models, and efficient data management, handling millions of daily requests without compromising performance."
             }
             title="Fraud Detection"
             icon={
@@ -50,15 +50,15 @@ export function SitesSection() {
           </Card>
         </motion.div>
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
         >
           <Card
             url={"./hiringfm"}
             screenshot={"/hiring-ss.png"}
             description={
-              "Empower your career with Hiring FM. Discover dream jobs directly from top employers, bypass recruiters, and take control of your career path. With 2.4M+ opportunities, create profiles, craft resumes, and access job directories. Choose flexible plans to invest in your future success. Unlock endless possibilities today."
+              "A job search platform I created to connect job seekers directly with employers. It features a database of over 2.4 million opportunities, user profile creation, and resume crafting tools. The platform aims to streamline the job search process and empower users in their career journeys."
             }
             title=""
             icon={
@@ -83,7 +83,7 @@ export function SitesSection() {
           </Card>
         </motion.div>
         <motion.div
-          initial={{ x: -100, opacity: 0 }}
+          initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
@@ -91,7 +91,7 @@ export function SitesSection() {
             <Card
               url={"./components"}
               description={
-                "Streamline your web development workflow with AI-assisted component creation. This powerful tool leverages artificial intelligence to generate reusable, efficient, and customizable components tailored to your specific project requirements. Save time, reduce manual coding efforts, and ensure consistency across your web application."
+                "An AI-assisted web development tool I built to generate reusable and customizable components. It's designed to save time, reduce manual coding, and ensure consistency across web applications. This project showcases my skills in AI integration and web development optimization."
               }
               title="Components"
               screenshot={"/components-ss.png"}
@@ -121,15 +121,15 @@ export function SitesSection() {
       </div>
       <div className="flex flex-col lg:flex-row justify-center w-full gap-4 mx-auto">
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
         >
           <Card
             url={"./planner"}
             screenshot={"/planner-thumb.png"}
             description={
-              "Revolutionize your planning process with an AI-powered assistant that helps you efficiently manage your daily tasks, projects, and long-term goals. This intelligent planner adapts to your unique needs, offering personalized suggestions, optimizing your schedule, and ensuring you stay organized and productive throughout your day."
+              "An intelligent planning assistant I developed to help users manage tasks, projects, and goals effectively. It adapts to individual needs, offering personalized suggestions and schedule optimization. This project demonstrates my ability to create practical, user-centric applications."
             }
             title="Planner"
             icon={
@@ -165,7 +165,7 @@ export function SitesSection() {
             url={"./chat"}
             screenshot={"/chat-thumb.png"}
             description={
-              "Experience a powerful, full-featured chat-bot that leverages vector storage for efficient document retrieval, seamlessly integrates with X.com API, performs web searches, generates images, and offers a wide range of advanced capabilities to enhance your conversational interactions."
+              "A versatile chatbot I engineered, featuring advanced document retrieval, X.com API integration, web search capabilities, and image generation. This project highlights my proficiency in natural language processing and API integration, creating a powerful tool for enhanced conversational interactions."
             }
             title="Chat"
             icon={

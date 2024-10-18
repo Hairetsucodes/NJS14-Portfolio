@@ -3,53 +3,59 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import AnimateHeroText from "@/components/animations/animation-hero-text";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ArrowDownIcon } from "lucide-react";
 
 export function HeroSection() {
-    const [hovered, setHovered] = React.useState(false);
+  const [hovered, setHovered] = React.useState(false);
 
-    return (
-        <div
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            className="relative flex flex-col items-center justify-center h-[30rem] mx-10 overflow-hidden rounded border-blue-500"
-        >
-            <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
-                <AnimateHeroText text="Welcome to Hairetsu's portfolio." />
-                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
-                    className="relative z-10 mx-auto text-lg lg:text-2xl md:text-xl font-medium text-white mt-4 max-w-2xl"> I&apos;m
-                    Thomas Whidden, also known as Hairetsu. I am a software developer who loves to learn and understand deeply how things work. 
-                    I thrive on creating innovative solutions to problems. If you&apos;re looking to collaborate or add a valuable
-                    addition to your team, I&apos;d love to connect and discuss how I can contribute.
-                </motion.p>
-                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
-                    className="relative z-10 mx-auto text-2xl font-medium text-white max-w-2xl mt-4"> Explore some
-                    of my projects below.
-                </motion.p>
-            </div>
-            <AnimatePresence>
-                {hovered && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="absolute h-full w-full"
-                    >
-                        <CanvasRevealEffect
-                            animationSpeed={5}
-                            containerClassName="bg-transparent"
-                            colors={[
-                                [59, 130, 246],
-                                [139, 92, 246],
-                            ]}
-                            opacities={[0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 1]}
-                            dotSize={2}
-                        />
-                    </motion.div>
-                )}
-            </AnimatePresence>
-            <div
-                className="absolute inset-0 bg-black/50 dark:bg-black/50 [mask-image:radial-gradient(400px_at_center,white,transparent)]" />
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative flex flex-col items-center justify-center h-[30rem] mx-10 overflow-hidden rounded border-blue-500"
+    >
+      <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+        <Image
+          src="/image3.jpeg"
+          width={400}
+          height={400}
+          alt="Your Name"
+          className="mx-auto aspect-square rounded-full object-cover border-2 border-primary"
+        />
+        <div className="flex flex-col items-center justify-center space-y-4 text-center lg:text-left lg:items-start">
+          <div className="space-y-2">
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+              Thomas Whidden
+            </h1>
+            <p className="text-xl text-muted-foreground md:text-2xl">
+              ML Engineer / Full Stack Developer / Web Security
+            </p>
+          </div>
+          <p className="max-w-[600px] text-muted-foreground md:text-xl">
+            With over 20 years in the industry, my journey began in hacking and
+            exploiting web vulnerabilities and APIs. This foundation evolved into
+            a comprehensive skill set in full stack development, now encompassing
+            Machine Learning and AI. I blend security expertise with cutting-edge
+            development practices to create robust, innovative solutions.
+          </p>
+          <Button
+            className="inline-flex items-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-10 py-2 px-4"
+            onClick={() => {
+              const projectsSection = document.getElementById("projects");
+              if (projectsSection) {
+                projectsSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            View My Projects
+            <ArrowDownIcon className="ml-2 h-4 w-4" />
+          </Button>
         </div>
-    )
-        ;
+      </div>
+
+      <div className="absolute inset-0 bg-black/50 dark:bg-black/50 [mask-image:radial-gradient(400px_at_center,white,transparent)]" />
+    </div>
+  );
 }
