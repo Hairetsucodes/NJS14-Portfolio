@@ -8,6 +8,9 @@ import { cn } from "@/lib/utils";
 import { ThemeImage } from "@/components/theme/theme-image";
 import Image from "next/image";
 import Link from "next/link";
+import { FileCode, Database, Code, Cpu, DatabaseIcon } from "lucide-react";
+import { FaErlang, FaPython } from "react-icons/fa";
+import { TbBrandMysql, TbBrandNextjs } from "react-icons/tb";
 
 export function SitesSection() {
   return (
@@ -24,6 +27,7 @@ export function SitesSection() {
             description={
               "A robust server-side tool I developed to protect high-traffic applications from fraud and spam. It features real-time monitoring, custom machine learning models, and efficient data management, handling millions of daily requests without compromising performance."
             }
+            stack={["Python", "NextJS", "Elixir", "MySQL"]}
             title="Fraud Detection"
             icon={
               <ThemeImage
@@ -61,6 +65,7 @@ export function SitesSection() {
               "A job search platform I created to connect job seekers directly with employers. It features a database of over 2.4 million opportunities, user profile creation, and resume crafting tools. The platform aims to streamline the job search process and empower users in their career journeys."
             }
             title=""
+            stack={["NextJS", "MySQL", "Python"]}
             icon={
               <Image
                 className={cn("")}
@@ -93,6 +98,7 @@ export function SitesSection() {
               description={
                 "An AI-assisted web development tool I built to generate reusable and customizable components. It's designed to save time, reduce manual coding, and ensure consistency across web applications. This project showcases my skills in AI integration and web development optimization."
               }
+              stack={["NextJS", "MySQL"]}
               title="Components"
               screenshot={"/components-ss.png"}
               icon={
@@ -132,6 +138,7 @@ export function SitesSection() {
               "An intelligent planning assistant I developed to help users manage tasks, projects, and goals effectively. It adapts to individual needs, offering personalized suggestions and schedule optimization. This project demonstrates my ability to create practical, user-centric applications."
             }
             title="Planner"
+            stack={["NextJS", "MySQL"]}
             icon={
               <ThemeImage
                 className={cn("rounded-lg p-2")}
@@ -164,6 +171,7 @@ export function SitesSection() {
           <Card
             url={"./chat"}
             screenshot={"/chat-thumb.png"}
+            stack={["NextJS", "MySQL", "Python", "FAISS Vector DB"]}
             description={
               "A versatile chatbot I engineered, featuring advanced document retrieval, X.com API integration, web search capabilities, and image generation. This project highlights my proficiency in natural language processing and API integration, creating a powerful tool for enhanced conversational interactions."
             }
@@ -202,6 +210,7 @@ const Card = ({
   screenshot,
   children,
   description,
+  stack,
 }: {
   description?: string;
   title: string;
@@ -209,8 +218,16 @@ const Card = ({
   url: string;
   icon: React.ReactNode;
   children?: React.ReactNode;
+  stack?: string[];
 }) => {
   const [hovered, setHovered] = React.useState(false);
+  const techIcons: { [key: string]: React.ComponentType<any> } = {
+    Python: FaPython,
+    NextJS: TbBrandNextjs,
+    Elixir: FaErlang,
+    MySQL: TbBrandMysql,
+    FAISS: DatabaseIcon,
+  };
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -252,8 +269,24 @@ const Card = ({
           <h2 className="dark:text-white pt-4 p-4 opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-500">
             {description}
           </h2>
+          <div className="flex flex-wrap gap-2 pt-2 p-4 opacity-0 group-hover/canvas-card:opacity-100 relative z-10 group-hover/canvas-card:text-black group-hover/canvas-card:-translate-y-2 transition duration-500">
+            {stack?.map((item) => {
+              const IconComponent = techIcons[item] || FileCode;
+              return (
+                <div
+                  key={item}
+                  className="flex items-center bg-gray-200 dark:bg-gray-800 rounded-full px-3 py-1"
+                >
+                  <IconComponent size={16} className="mr-2" />
+                  <span className="text-sm">{item}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </Link>
     </div>
   );
 };
+
+export default Card;
