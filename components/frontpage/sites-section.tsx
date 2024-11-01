@@ -64,7 +64,7 @@ export function SitesSection() {
             description={
               "A job search platform I created to connect job seekers directly with employers. It features a database of over 2.4 million opportunities, user profile creation, and resume crafting tools. The platform aims to streamline the job search process and empower users in their career journeys."
             }
-            title=""
+            title="Job Search"
             stack={["NextJS", "MySQL", "Python"]}
             icon={
               <Image
