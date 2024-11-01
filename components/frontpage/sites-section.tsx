@@ -14,8 +14,8 @@ import { TbBrandMysql, TbBrandNextjs } from "react-icons/tb";
 
 export function SitesSection() {
   return (
-    <div className={"mt-8 mx-10"}>
-      <div className="flex flex-col lg:flex-row justify-center w-full gap-4 mx-auto">
+    <div className={"mt-8 mx-10 "}>
+      <div className="flex flex-col lg:flex-row justify-center w-full gap-4 mx-auto ">
         <motion.div
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
