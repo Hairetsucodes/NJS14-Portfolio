@@ -31,15 +31,14 @@ export default function SitesAnimateHeroTextSmall({ text }: AnimateHeroTextProps
 
     return (
         <div className={'h-20'}>
-            <motion.span
+            <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 style={{ opacity }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold relative  bg-clip-text text-transparent bg-gradient-to-b from-blue-400 to-blue-800 py-8"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold relative bg-clip-text text-transparent bg-gradient-to-b from-blue-400 to-blue-800 py-8"
             >
-
                 {displayText}
-            </motion.span>
+            </motion.div>
         </div>
     );
 }
