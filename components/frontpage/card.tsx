@@ -68,7 +68,7 @@ export const Card = ({
               />
             </div>
           </div>
-          <h2 className="text-sm p-4 font-semibold opacity-0 group-hover/canvas-card:opacity-100 relative z-10  group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-500">
+          <h2 className="flex  text-sm p-4 font-semibold opacity-0 group-hover/canvas-card:opacity-100 relative z-10  group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-500">
             {icon} {title}
           </h2>
           <h2 className="dark:text-white pt-4 px-6 opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-500 text-sm leading-relaxed">
