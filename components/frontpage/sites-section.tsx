@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import LogoLight from "@/assets/logo-light.png";
 import DecipherLogo from "@/assets/decipher.png";
 import NotateLogo from "@/assets/notate.png";
 import { motion } from "framer-motion";
@@ -41,7 +40,7 @@ export function SitesSection() {
           >
             <CanvasRevealEffect
               animationSpeed={3}
-              containerClassName="bg-transparent"
+              containerClassName="bg-transparent rounded-[10px]"
               colors={[
                 [59, 130, 246],
                 [139, 92, 246],
@@ -78,7 +77,7 @@ export function SitesSection() {
           >
             <CanvasRevealEffect
               animationSpeed={3}
-              containerClassName="bg-transparent"
+              containerClassName="bg-transparent rounded-[10px]"
               colors={[
                 [59, 130, 246],
                 [139, 92, 246],
@@ -114,7 +113,7 @@ export function SitesSection() {
           >
             <CanvasRevealEffect
               animationSpeed={3}
-              containerClassName="bg-transparent"
+              containerClassName="bg-transparent rounded-[10px]"
               colors={[
                 [59, 130, 246],
                 [139, 92, 246],

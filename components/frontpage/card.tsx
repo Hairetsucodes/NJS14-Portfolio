@@ -36,7 +36,7 @@ export const Card = ({
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className=" group/canvas-card flex items-center rounded justify-center dark:border-blue-500 max-w-sm w-full mx-auto  min-h-[22rem] relative"
+      className=" group/canvas-card flex items-center rounded justify-center dark:border-blue-500 w-[400px] h-[400px] mx-auto relative overflow-hidden"
     >
       <AnimatePresence>
         {hovered && (
@@ -57,23 +57,24 @@ export const Card = ({
                 {icon} {title}
               </h2>
             </div>
-            <div className="text-sm w-full p-4 h-full flex font-semibold group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0 transition duration-200">
+            <div className="text-sm w-full p-4 h-full flex justify-center font-semibold group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0 transition duration-200">
               <Image
                 className={"border-2 rounded-lg text-white shadow-2xl"}
                 src={screenshot}
                 alt={"screenshot"}
-                width={300}
-                height={300}
+                width={350}
+                height={350}
+                style={{ objectFit: "cover" }}
               />
             </div>
           </div>
           <h2 className="text-sm p-4 font-semibold opacity-0 group-hover/canvas-card:opacity-100 relative z-10  group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-500">
             {icon} {title}
           </h2>
-          <h2 className="dark:text-white pt-4 p-4 opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-500">
+          <h2 className="dark:text-white pt-4 px-6 opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-500 text-sm leading-relaxed">
             {description}
           </h2>
-          <div className="flex flex-wrap gap-2 pt-2 p-4 opacity-0 group-hover/canvas-card:opacity-100 relative z-10 group-hover/canvas-card:text-black group-hover/canvas-card:-translate-y-2 transition duration-500">
+          <div className="flex flex-wrap gap-2 pt-4 px-6 opacity-0 group-hover/canvas-card:opacity-100 relative z-10 group-hover/canvas-card:text-black group-hover/canvas-card:-translate-y-2 transition duration-500">
             {stack?.map((item) => {
               const IconComponent = techIcons[item] || FileCode;
               return (
